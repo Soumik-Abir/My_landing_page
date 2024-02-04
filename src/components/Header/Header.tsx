@@ -13,7 +13,7 @@ const Header = () => {
             className="aspect-[0.98 ] pl-6"
             alt="Logo"
           />
-          <div className="flex flex-col justify-center self-stretch px-16 text-base font-medium bg-slate-100 rounded-[50px] text-neutral-700 ">
+          <div className="flex flex-col justify-center self-stretch px-16 text-base font-medium bg-slate-100 rounded-[50px] text-neutral-700 max-sm:hidden">
             <div className="flex gap-20 max-md:flex-wrap max-md:mr-2 max-md:max-w-full">
               <div>Home</div>
               <div>About us</div>
@@ -23,12 +23,14 @@ const Header = () => {
           </div>
           <div className="flex gap-3.5 whitespace-nowrap">
               <Dropdown />
-              <Button
-              onClick={() => console.log('Button clicked')} // Add your click handler here
-              label="Schedule a Call"
-              bgColor="#3171DE"
-              hoverColor="#376cc7"
-            />
+              <div className="max-sm:hidden">
+                <Button
+                  onClick={() => console.log('Button clicked')} // Add your click handler here
+                  label="Schedule a Call"
+                  bgColor="#3171DE"
+                  hoverColor="#376cc7"
+                />
+              </div>
           </div>
         </div>
       </div>

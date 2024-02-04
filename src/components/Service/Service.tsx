@@ -123,30 +123,67 @@ const Service = () => {
 
   return (
     <>
-      <div className="flex justify-center gap-2 mt-14 p-4 text-start text-3xl font-medium leading-[40px] text-neutral-700  max-sm:flex ">
-        <div className="w-[60px] max-sm:w-[50px] max-sm:ml-3 max-sm:align-top">
-          <img loading="lazy" src={vector1} alt="logo" />
+      <div>
+        <div className="flex justify-center gap-2 mt-14 p-4 text-start text-3xl font-medium leading-[40px] text-neutral-700  max-sm:flex ">
+          <div className="w-[60px] max-sm:w-[50px] max-sm:ml-3 max-sm:align-top">
+            <img loading="lazy" src={vector1} alt="logo" />
+          </div>
+          <div className="max-md:max-w-full max-sm:text-xl">
+            Empowering Your Digital Vision: Our
+            {window.innerWidth >= 640 && <br />}Comprehensive Tech Services.
+          </div>
         </div>
-        <div className="max-md:max-w-full max-sm:text-xl">
-          Empowering Your Digital Vision: Our
-          {window.innerWidth >= 640 && <br />}Comprehensive Tech Services.
-        </div>
-      </div>
-      <div className="relative h-[450px]">
-        <div className="absolute top-[70%] left-[66%] transform -translate-x-1/2 -translate-y-1/2 max-sm:hidden">
-          <img loading="lazy" src={vector2} alt="logo" className="w-[170px]" />
-        </div>
-        <div className="absolute top-[80%] right-[70%] transform translate-x-1/2 translate-y-1/2 max-sm:hidden">
-          <img loading="lazy" src={vector1} alt="logo" className="w-[180px]" />
-        </div>
-        {/* Conditionally render the slider only on small screens */}
-        {isSmallScreen ? (
-          <Slider key={sliderKey} {...sliderSettings}>
-            {viewModel
-              .getSections()
-              .map((section: ServiceSectionModel, sectionIndex) => (
-                <div key={sectionIndex}>
-                  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3">
+        <div className="relative">
+          <div className="absolute top-[46%] left-[66%] transform -translate-x-1/2 -translate-y-1/2 max-sm:hidden">
+            <img
+              loading="lazy"
+              src={vector2}
+              alt="logo"
+              className="w-[170px]"
+            />
+          </div>
+          <div className="absolute top-[50%] right-[70%] transform translate-x-1/2 translate-y-1/2 max-sm:hidden">
+            <img
+              loading="lazy"
+              src={vector1}
+              alt="logo"
+              className="w-[180px]"
+            />
+          </div>
+          {/* Conditionally render the slider only on small screens */}
+          {isSmallScreen ? (
+            <Slider key={sliderKey} {...sliderSettings}>
+              {viewModel
+                .getSections()
+                .map((section: ServiceSectionModel, sectionIndex) => (
+                  <div key={sectionIndex}>
+                    <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3">
+                      <div className="flex flex-col h-full">
+                        {section.cards.map(
+                          (card: ServiceCardModel, cardIndex) => (
+                            <Card
+                              key={cardIndex}
+                              imageSrc={card.imageSrc}
+                              title={card.title}
+                              description={card.description}
+                            />
+                          )
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </Slider>
+          ) : (
+            // Render non-slider version for larger screens
+            <div className="flex flex-wrap px-5 w-full">
+              {viewModel
+                .getSections()
+                .map((section: ServiceSectionModel, sectionIndex) => (
+                  <div
+                    key={sectionIndex}
+                    className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3"
+                  >
                     <div className="flex flex-col h-full">
                       {section.cards.map(
                         (card: ServiceCardModel, cardIndex) => (
@@ -160,33 +197,10 @@ const Service = () => {
                       )}
                     </div>
                   </div>
-                </div>
-              ))}
-          </Slider>
-        ) : (
-          // Render non-slider version for larger screens
-          <div className="flex flex-wrap px-5 w-full">
-            {viewModel
-              .getSections()
-              .map((section: ServiceSectionModel, sectionIndex) => (
-                <div
-                  key={sectionIndex}
-                  className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3"
-                >
-                  <div className="flex flex-col h-full">
-                    {section.cards.map((card: ServiceCardModel, cardIndex) => (
-                      <Card
-                        key={cardIndex}
-                        imageSrc={card.imageSrc}
-                        title={card.title}
-                        description={card.description}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
-          </div>
-        )}
+                ))}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
