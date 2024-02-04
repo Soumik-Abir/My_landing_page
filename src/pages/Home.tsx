@@ -1,6 +1,7 @@
 import Header from '../components/Header/Header';
 import HomeSection from '../components/HomeSection/HomeSection';
-import Challenge from '../components/challenge/challenge';
+import Challenge from '../components/Challenge/Challenge';
+import Service from '../components/Service/Service';
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Header/>
       <HomeSection/>
       <Challenge/>
+      <Service/>
     </div>
     </>
   );
