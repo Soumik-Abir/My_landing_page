@@ -1,4 +1,5 @@
 import logo from "../../assets/Logo.svg";
+import Button from "../Button/Button";
 import Dropdown from "./Dropdown";
 
 const Header = () => {
@@ -22,9 +23,12 @@ const Header = () => {
           </div>
           <div className="flex gap-3.5 whitespace-nowrap">
               <Dropdown />
-            <button className="grow justify-center px-6 py-3 mr-4 text-base font-medium text-white bg-[#3171de] hover:cursor-pointer hover:bg-[#3971d1] rounded-[50px] max-md:px-5">
-              Schedule a Call
-            </button>
+              <Button
+              onClick={() => console.log('Button clicked')} // Add your click handler here
+              label="Schedule a Call"
+              bgColor="#3171DE"
+              hoverColor="#376cc7"
+            />
           </div>
         </div>
       </div>
