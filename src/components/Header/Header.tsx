@@ -1,3 +1,4 @@
+// Header.tsx
 import logo from "../../assets/Logo.svg";
 import Button from "../Button/Button";
 import Dropdown from "./Dropdown";
@@ -10,7 +11,7 @@ const Header = () => {
           <img
             loading="lazy"
             srcSet={logo}
-            className="aspect-[0.98 ] pl-6"
+            className="pl-6 max-sm:pl-4"
             alt="Logo"
           />
           <div className="flex flex-col justify-center self-stretch px-16 text-base font-medium bg-slate-100 rounded-[50px] text-neutral-700 max-sm:hidden">
@@ -21,9 +22,9 @@ const Header = () => {
               <div>Contact Us</div>
             </div>
           </div>
-          <div className="flex gap-3.5 whitespace-nowrap">
-              <Dropdown />
-              <div className="max-sm:hidden">
+          <div className="flex gap-3.5 whitespace-nowrap max-sm:hidden">
+              <Dropdown/>
+              <div>
                 <Button
                   onClick={() => console.log('Button clicked')} // Add your click handler here
                   label="Schedule a Call"
